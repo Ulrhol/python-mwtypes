@@ -34,11 +34,14 @@ class Upload(jsonable.Type):
         .. autoattribute:: mwtypes.Upload.size
             :annotation: = Number of bytes of content : int | None
 
+        .. autoattribute:: mwtypes.Upload.content
+            :annotation: = Base64 encoded content : str | None
+
     """
-    __slots__ = ('timestamp', 'user', 'comment', 'filename', 'source', 'size')
+    __slots__ = ('timestamp', 'user', 'comment', 'filename', 'source', 'size', 'content')
 
     def initialize(self, timestamp=None, user=None, comment=None,
-                   filename=None, source=None, size=None):
+                   filename=None, source=None, size=None, content=None):
 
         self.timestamp = none_or(timestamp, Timestamp)
         """
@@ -68,4 +71,9 @@ class Upload(jsonable.Type):
         self.size = none_or(size, int)
         """
         Number of bytes of content : int | None
+        """
+
+        self.content = none_or(content, str)
+        """
+        Base64 encoded content : str | None
         """
